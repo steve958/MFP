@@ -1,0 +1,172 @@
+.project-create-container {
+    position: absolute;
+    z-index: 10;
+    left: 20px;
+    top: 120px;
+    width: 30vw;
+    height: 77vh;
+    background-color: #006400;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 1.25em;
+    padding: 20px;
+    font-weight: 600;
+}
+
+.select-field {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.select-field input {
+    height: 40px;
+    background-color: #7CB9E8;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid white;
+}
+
+.select-field select {
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    width: 170px;
+    border-radius: 5px;
+    background-color: #7CB9E8;
+    border: 2px solid white;
+}
+
+.select-field textarea {
+    width: 400px;
+    margin-top: 20px;
+    font-size: 20px;
+    height: 130px;
+    background-color: #7CB9E8;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.submit-btn {
+    background-color: #7CB9E8;
+    padding: 10px;
+    font-size: 20px;
+    margin: 20px;
+    margin-top: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-btn:active {
+    background-color: white;
+    color: #006400;
+    padding: 8px;
+}
+
+.error-msg {
+    position: absolute;
+    left: 200px;
+    bottom: -50px;
+    color: rgb(240, 58, 58);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.freezanz input {
+    background-color: #90EE90;
+}
+
+.freezanz textarea {
+    background-color: #90EE90;
+    height: 50px;
+    width: 250px;
+}
+
+.freezanz select {
+    background-color: #90EE90;
+}
+
+.freezanz button {
+    background-color: #90EE90;
+}
+
+.freezanz-btn {
+    background-color: #90EE90;
+    padding: 10px;
+    font-size: 20px;
+    margin: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.freezanz-btn:active {
+    background-color: white;
+    color: darkgreen;
+    padding: 8px;
+}
+
+.consumption {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin-left: 10px;
+}
+
+.consumption span {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+}
+
+.consumption span input {
+    width: 60px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.wrapper {
+    border: 2px solid white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #006400;
+    min-width: 100%;
+    width: fit-content;
+}
+
+.nozz {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.nozz-count input {
+    width: 40px !important;
+    height: 30px !important;
+    border-radius: 5px;
+}
+
+.consumption-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.boolean {
+    transition: all 1s;
+}
+
+.boolean:disabled {
+    background: #dddddd;
+    filter: blur(1px);
+}

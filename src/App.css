@@ -1,0 +1,126 @@
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: lightblue;
+}
+
+.logo {
+  height: 4em;
+  margin-top: 15px;
+  margin-right: 20px;
+  will-change: filter;
+  position: absolute;
+  right: 0;
+  top: 0;
+  filter: hue-rotate(280deg);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(1) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #006400;
+  height: 100px;
+  width: 100vw;
+}
+
+.header-logo {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.header-logo img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  margin: 20px;
+  width: 150px;
+  height: auto;
+}
+
+.content-container {
+  width: 100vw;
+  height: 780px;
+}
+
+.menu-icon {
+  transition: all 2s;
+  position: fixed;
+  left: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+}
+
+.menu-icon p {
+  font-size: 20px;
+  color: white;
+}
+
+.menu-icon span:hover {
+  cursor: pointer;
+
+}
+
+.menu-options {
+  margin-left: 20px;
+  height: 100%;
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  padding: 2px;
+}
+
+.menu-options p {
+  font-weight: 300;
+  padding: 5px;
+}
+
+
+.menu-options p:hover {
+  background-color: aliceblue;
+  color: #006400;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  background-color: #006400;
+  font-size: 20px;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.save-btn:active {
+  padding: 5px;
+}
