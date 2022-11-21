@@ -189,7 +189,7 @@ const EditProject = (props) => {
 
     return <>
         <div className="edit-project-container">
-            {props.editProjectInfo.projectType === 'navodnjavanje' ? <EditIrrigationProject editProjectInfo={props.editProjectInfo} setEditProjectInfo={props.setEditProjectInfo} /> : <EditFreezanzProject editProjectInfo={props.editProjectInfo} setEditProjectInfo={props.setEditProjectInfo} />}
+            {props.editProjectInfo.projectType === 'navodnjavanje' ? <EditIrrigationProject editProjectInfo={props.editProjectInfo} setEditProjectInfo={props.setEditProjectInfo} setMenuClicked={props.setMenuClicked} /> : <EditFreezanzProject editProjectInfo={props.editProjectInfo} setEditProjectInfo={props.setEditProjectInfo} setMenuClicked={props.setMenuClicked} />}
         </div>
         <div className="cover-right"></div>
         <div className="cover-bottom"></div>

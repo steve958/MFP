@@ -118,7 +118,13 @@ function LocationMarker(props) {
                             </div>}
                         </span>
                         <span className="footer">
-                            <span onClick={() => props.setEditProjectInfo(marker)}><p>izmeni sistem</p><VscEdit size={20} /></span>
+                            <span onClick={() => {
+                                props.setEditProjectInfo(marker); props.setMenuClicked({
+                                    menu: false,
+                                    newProject: false,
+                                    projectsList: false
+                                })
+                            }}><p>izmeni sistem</p><VscEdit size={20} /></span>
                             <span onClick={() => props.setDeleteClicked(marker.id)}><p>obrisi sistem</p><RiDeleteBinLine size={20} /></span>
                         </span>
                     </div>
@@ -149,7 +155,7 @@ const Map = (props) => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <LocationMarker newProjectInfo={props.newProjectInfo} setNewProjectInfo={props.setNewProjectInfo} setDeleteClicked={setDeleteClicked} setEditProjectInfo={props.setEditProjectInfo} />
+            <LocationMarker newProjectInfo={props.newProjectInfo} setNewProjectInfo={props.setNewProjectInfo} setDeleteClicked={setDeleteClicked} setEditProjectInfo={props.setEditProjectInfo} setMenuClicked={props.setMenuClicked} />
         </MapContainer>
         {deleteClicked && <>
             <div className="modal"></div>
