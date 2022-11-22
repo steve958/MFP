@@ -13,6 +13,7 @@
     padding: 20px;
     font-weight: 600;
     z-index: 201;
+    border: 7px double white;
 }
 
 .cover-right {

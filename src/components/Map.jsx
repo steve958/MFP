@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMapEvent } from 'react-leaflet'
 import uuid from 'react-uuid';
 import 'leaflet/dist/leaflet.css';
 import './Map.css'
@@ -46,9 +46,13 @@ function LocationMarker(props) {
     }, [])
 
 
+    const map1 = useMapEvent('click', () => {
+        if (props.goToCoords) {
+            map.flyTo(props.goToCoords)
+        }
+    })
 
     const map = useMapEvents({
-
         click(e) {
             if (props.newProjectInfo) {
                 dispatch(addProject({ ...props.newProjectInfo, id: uuid(), location: [e.latlng.lat, e.latlng.lng] }))
@@ -63,7 +67,6 @@ function LocationMarker(props) {
                 setNoteClicked(false)
             }
         },
-
     })
 
     return projectsArray.length === 0 ? null : (
@@ -135,27 +138,34 @@ function LocationMarker(props) {
 }
 
 const Map = (props) => {
-
+    const [mapCenter, setMapCenter] = useState([45.267136, 19.833549])
+    const [mapZoom, setMapZoom] = useState(8)
     const [deleteClicked, setDeleteClicked] = useState(null)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (props.goToCoords) {
+            setMapCenter(props.goToCoords)
+            setMapZoom(12)
+            console.log(props.goToCoords);
+        }
+    }, [props.goToCoords])
 
     function handleDeleteProject(id) {
         dispatch(deleteProject(id))
         setDeleteClicked(null)
     }
 
-
-
     return < div className="map-container" >
         <MapContainer
-            center={[45.267136, 19.833549]}
-            zoom={8}
+            center={mapCenter}
+            zoom={mapZoom}
             scrollWheelZoom={true}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <LocationMarker newProjectInfo={props.newProjectInfo} setNewProjectInfo={props.setNewProjectInfo} setDeleteClicked={setDeleteClicked} setEditProjectInfo={props.setEditProjectInfo} setMenuClicked={props.setMenuClicked} />
+            <LocationMarker newProjectInfo={props.newProjectInfo} setNewProjectInfo={props.setNewProjectInfo} setDeleteClicked={setDeleteClicked} setEditProjectInfo={props.setEditProjectInfo} setMenuClicked={props.setMenuClicked} goToCoords={props.goToCoords} />
         </MapContainer>
         {deleteClicked && <>
             <div className="modal"></div>

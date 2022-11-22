@@ -12,6 +12,7 @@ import ProjectsList from './components/ProjectsList';
 function App() {
   const [newProjectInfo, setNewProjectInfo] = useState(null)
   const [editProjectInfo, setEditProjectInfo] = useState(null)
+  const [goToCoords, setGoToCoords] = useState(null)
   const [menuClicked, setMenuClicked] = useState({
     menu: false,
     newProject: false,
@@ -63,11 +64,11 @@ function App() {
         </a>
       </div>
       <div className='content-container'>
-        <Map newProjectInfo={newProjectInfo} setNewProjectInfo={setNewProjectInfo} setEditProjectInfo={setEditProjectInfo} setMenuClicked={setMenuClicked} />
+        <Map newProjectInfo={newProjectInfo} setNewProjectInfo={setNewProjectInfo} setEditProjectInfo={setEditProjectInfo} setMenuClicked={setMenuClicked} goToCoords={goToCoords} />
       </div>
       {menuClicked.newProject ? <CreateProject setNewProjectInfo={setNewProjectInfo} setMenuClicked={setMenuClicked} /> : null}
       {editProjectInfo ? <EditProject editProjectInfo={editProjectInfo} setEditProjectInfo={setEditProjectInfo} /> : null}
-      {menuClicked.projectsList ? <ProjectsList /> : null}
+      {menuClicked.projectsList ? <ProjectsList setGoToCoords={setGoToCoords} /> : null}
     </div >
   )
 }

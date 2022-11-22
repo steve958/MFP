@@ -4,7 +4,7 @@
     left: 20px;
     top: 120px;
     width: 30vw;
-    height: 77vh;
+    height: 76vh;
     background-color: #006400;
     border-radius: 5px;
     color: white;
@@ -12,6 +12,7 @@
     font-size: 1.25em;
     padding: 20px;
     font-weight: 600;
+    border: 7px double white;
 }
 
 .select-field {
