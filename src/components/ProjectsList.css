@@ -10,7 +10,6 @@
     border-radius: 5px;
     color: white;
     text-align: center;
-    font-size: 1.25em;
     padding: 20px;
     font-weight: 600;
     border: 7px double white;
@@ -21,12 +20,10 @@
     cursor: pointer;
     margin: 10px;
     margin-top: 0;
-    filter: invert(1);
 }
 
 .go-to-icon:hover {
-    filter: invert(0);
-    box-shadow: #006400;
+    filter: invert(1);
 }
 
 .depletion {
@@ -40,9 +37,13 @@ table {
 table,
 th,
 td {
-    border: 1px solid white;
+    border: 1px solid #90EE90;
 }
 
+td {
+    color: #006400;
+    background-color: #90EE90;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
