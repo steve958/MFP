@@ -221,6 +221,19 @@
     border-radius: 10px;
 }
 
+.map-cover {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: gainsboro;
+    opacity: 0.5;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}
 
 @keyframes width {
     0% {

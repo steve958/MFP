@@ -45,10 +45,16 @@ function LocationMarker(props) {
         // dispatch(clearStore())
     }, [])
 
+    useEffect(() => {
+        if (map1 && props.goToCoords) {
+            map1.fireEvent('click', props.goToCoords)
+            props.setMapCover(true)
+        }
+    }, [props.goToCoords])
 
     const map1 = useMapEvent('click', () => {
         if (props.goToCoords) {
-            map.flyTo(props.goToCoords)
+            map1.setView(props.goToCoords, 13)
         }
     })
 
@@ -138,18 +144,9 @@ function LocationMarker(props) {
 }
 
 const Map = (props) => {
-    const [mapCenter, setMapCenter] = useState([45.267136, 19.833549])
-    const [mapZoom, setMapZoom] = useState(8)
     const [deleteClicked, setDeleteClicked] = useState(null)
+    const [mapCover, setMapCover] = useState(false)
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        if (props.goToCoords) {
-            setMapCenter(props.goToCoords)
-            setMapZoom(12)
-            console.log(props.goToCoords);
-        }
-    }, [props.goToCoords])
 
     function handleDeleteProject(id) {
         dispatch(deleteProject(id))
@@ -158,15 +155,17 @@ const Map = (props) => {
 
     return < div className="map-container" >
         <MapContainer
-            center={mapCenter}
-            zoom={mapZoom}
+            center={props.goToCoords ? props.goToCoords : [45.267136, 19.833549]}
+            zoom={8}
             scrollWheelZoom={true}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <LocationMarker newProjectInfo={props.newProjectInfo} setNewProjectInfo={props.setNewProjectInfo} setDeleteClicked={setDeleteClicked} setEditProjectInfo={props.setEditProjectInfo} setMenuClicked={props.setMenuClicked} goToCoords={props.goToCoords} />
-        </MapContainer>
+            {mapCover && <div className="map-cover" onClick={() => { setMapCover(false); props.setGoToCoords(null) }}><p>klikni bilo gde na mapu</p></div>
+            }
+            <LocationMarker newProjectInfo={props.newProjectInfo} setNewProjectInfo={props.setNewProjectInfo} setDeleteClicked={setDeleteClicked} setEditProjectInfo={props.setEditProjectInfo} setMenuClicked={props.setMenuClicked} goToCoords={props.goToCoords} setMapCover={setMapCover} />
+        </MapContainer >
         {deleteClicked && <>
             <div className="modal"></div>
             <div className="confirmation-wrapper">
@@ -176,7 +175,7 @@ const Map = (props) => {
                     <span className="no" onClick={() => setDeleteClicked(null)}><p>Ne</p><ImCancelCircle size={30} /></span>
                 </span>
             </div></>}
-    </div>
+    </div >
 }
 
 export default Map

@@ -64,7 +64,7 @@ function App() {
         </a>
       </div>
       <div className='content-container'>
-        <Map newProjectInfo={newProjectInfo} setNewProjectInfo={setNewProjectInfo} setEditProjectInfo={setEditProjectInfo} setMenuClicked={setMenuClicked} goToCoords={goToCoords} />
+        <Map newProjectInfo={newProjectInfo} setNewProjectInfo={setNewProjectInfo} setEditProjectInfo={setEditProjectInfo} setMenuClicked={setMenuClicked} goToCoords={goToCoords} setGoToCoords={setGoToCoords} />
       </div>
       {menuClicked.newProject ? <CreateProject setNewProjectInfo={setNewProjectInfo} setMenuClicked={setMenuClicked} /> : null}
       {editProjectInfo ? <EditProject editProjectInfo={editProjectInfo} setEditProjectInfo={setEditProjectInfo} /> : null}
