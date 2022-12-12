@@ -9,6 +9,6 @@ export function calcDepletion(workTime, consumption, nozzles, refillAmount, refi
     const dailyConsumption = nozzles * (consumption / 100) * (workTime / 60) * 40
     const daysLeftUntilDepletion = Math.floor(refillAmount / dailyConsumption)
     const reservoir = refill + (daysLeftUntilDepletion * 24 * 60 * 60 * 1000)
-    return Math.abs(Math.floor((time - reservoir) / 1000 / 60 / 60 / 24))
+    return Math.floor((time - reservoir) / 1000 / 60 / 60 / 24)
 }
 

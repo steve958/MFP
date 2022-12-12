@@ -103,6 +103,7 @@
 }
 
 .details {
+    text-transform: none;
     position: absolute;
     right: -280px;
     top: 250px;

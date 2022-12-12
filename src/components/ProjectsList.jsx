@@ -36,9 +36,27 @@ const ProjectsList = (props) => {
                             </td>
                             <td>
                                 <span className="depletion">
-                                    <p>{calcDepletion(system.workTime1, system.consumption1, system.nozzles, system.refill1, system.refillDate)} {calcDepletion(system.workTime1, system.consumption1, system.nozzles, system.refill1, system.refillDate) === 1 ? 'dan' : 'dana'} do praznjenja rezervoara 1</p>
-                                    {system.product2 && <p>{calcDepletion(system.workTime2, system.consumption2, system.nozzles, system.refill2, system.refillDate)} {calcDepletion(system.workTime2, system.consumption2, system.nozzles, system.refill2, system.refillDate) === 1 ? 'dan' : 'dana'} do praznjenja rezervoara 2</p>}
-                                    {system.product3 && <p>{calcDepletion(system.workTime3, system.consumption3, system.nozzles, system.refill3, system.refillDate)} {calcDepletion(system.workTime3, system.consumption3, system.nozzles, system.refill3, system.refillDate) === 1 ? 'dan' : 'dana'} do praznjenja rezervoara 3</p>}
+                                    <p>{calcDepletion(system.workTime1, system.consumption1, system.nozzles, system.refill1, system.refillDate) < 0
+                                        ?
+                                        calcDepletion(system.workTime1, system.consumption1, system.nozzles, system.refill1, system.refillDate).toString().slice(-1) === '1'
+                                            ?
+                                            `${Math.abs(calcDepletion(system.workTime1, system.consumption1, system.nozzles, system.refill1, system.refillDate))}  dan do praznjenja rezervoara 1`
+                                            : `${Math.abs(calcDepletion(system.workTime1, system.consumption1, system.nozzles, system.refill1, system.refillDate))} dana do praznjenja rezervoara 1`
+                                        : <span className="alert">rezervoar 1 prazan</span>}</p>
+                                    {system.product2 && <p>{calcDepletion(system.workTime2, system.consumption2, system.nozzles, system.refill2, system.refillDate) < 0
+                                        ?
+                                        calcDepletion(system.workTime2, system.consumption2, system.nozzles, system.refill2, system.refillDate).toString().slice(-1) === '1'
+                                            ?
+                                            `${Math.abs(calcDepletion(system.workTime2, system.consumption2, system.nozzles, system.refill2, system.refillDate))}  dan do praznjenja rezervoara 2`
+                                            : `${Math.abs(calcDepletion(system.workTime2, system.consumption2, system.nozzles, system.refill2, system.refillDate))} dana do praznjenja rezervoara 2`
+                                        : <span className="alert">rezervoar 2 prazan</span>}</p>}
+                                    {system.product3 && <p>{calcDepletion(system.workTime3, system.consumption3, system.nozzles, system.refill3, system.refillDate) < 0
+                                        ?
+                                        calcDepletion(system.workTime3, system.consumption3, system.nozzles, system.refill3, system.refillDate).toString().slice(-1) === '1'
+                                            ?
+                                            `${Math.abs(calcDepletion(system.workTime3, system.consumption3, system.nozzles, system.refill3, system.refillDate))}  dan do praznjenja rezervoara 3`
+                                            : `${Math.abs(calcDepletion(system.workTime3, system.consumption3, system.nozzles, system.refill3, system.refillDate))} dana do praznjenja rezervoara 3`
+                                        : <span className="alert">rezervoar 3 prazan</span>}</p>}
                                 </span>
                             </td>
                         </tr>
